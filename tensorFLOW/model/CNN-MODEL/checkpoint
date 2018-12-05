@@ -1,0 +1,6 @@
+model_checkpoint_path: "/home/zxf/PycharmProjects/test/zxf/tensorFLOW/model/CNN-MODEL/model.ckpt-22001"
+all_model_checkpoint_paths: "/home/zxf/PycharmProjects/test/zxf/tensorFLOW/model/CNN-MODEL/model.ckpt-18001"
+all_model_checkpoint_paths: "/home/zxf/PycharmProjects/test/zxf/tensorFLOW/model/CNN-MODEL/model.ckpt-19001"
+all_model_checkpoint_paths: "/home/zxf/PycharmProjects/test/zxf/tensorFLOW/model/CNN-MODEL/model.ckpt-20001"
+all_model_checkpoint_paths: "/home/zxf/PycharmProjects/test/zxf/tensorFLOW/model/CNN-MODEL/model.ckpt-21001"
+all_model_checkpoint_paths: "/home/zxf/PycharmProjects/test/zxf/tensorFLOW/model/CNN-MODEL/model.ckpt-22001"
