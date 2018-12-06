@@ -1,4 +1,4 @@
-import  time
+import  time,sys
 import tensorflow as tf
 from tensorflow.examples.tutorials.mnist import input_data
 import  mnist_inference
@@ -13,8 +13,6 @@ def evaluate(mnist):
         y_ = tf.placeholder(
             tf.float32, [None, mnist_inference.OUTPUT_NODE], name='y-input'
         )
-
-
 
         y = mnist_inference.inference(x, None, None)
 
@@ -32,6 +30,7 @@ def evaluate(mnist):
 
         while True:
             with tf.Session() as sess:
+                print(mnist_train.MODEL_SAVE_PATH)
                 ckpt = tf.train.get_checkpoint_state(
                     mnist_train.MODEL_SAVE_PATH
                 )
@@ -42,7 +41,6 @@ def evaluate(mnist):
 
                     validate_feed = {x: mnist.validation.images, y_: mnist.validation.labels}
 
-
                     accuracy_score =sess.run(accuracy, feed_dict=validate_feed)
 
                     print("After %s training steps, validation" "accuracy = %g " % (global_step, accuracy_score))
@@ -52,7 +50,8 @@ def evaluate(mnist):
                     return
             time.sleep(EVAL_INTERVAL_SECS)
 def main(argv=None):
-    mnist = input_data.read_data_sets('/home/zxf/PycharmProjects/test/zxf/tensorFLOW/MNIST_data/', one_hot=True)
+
+    mnist = input_data.read_data_sets(sys.path[0]+'/MNIST_data/', one_hot=True)
     evaluate(mnist)
 
 if __name__ == '__main__':

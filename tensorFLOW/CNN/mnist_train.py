@@ -1,6 +1,6 @@
 import tensorflow as tf
 from tensorflow.examples.tutorials.mnist import input_data
-import os
+import os,sys
 import numpy as np
 import  mnist_inference
 
@@ -12,7 +12,7 @@ TRAINING_STEPS = 60000
 MOVING_AVERAGE_DECAY = 0.99
 
 
-MODEL_SAVE_PATH = "/home/zxf/PycharmProjects/test/zxf/tensorFLOW/model/CNN-MODEL/"
+MODEL_SAVE_PATH = sys.path[0]+"/CNN-MODEL/"
 MODEL_NAME = "model.ckpt"
 
 def train(mnist):
@@ -57,16 +57,17 @@ def train(mnist):
                                          mnist_inference.IMAGE_SIZE,
                                          mnist_inference.NUM_CHANNELS))
 
-            _, loss_value, step = sess.run([train_op, loss, global_step], feed_dict={x:reshaped_xs,y_:ys})
+            _, cross_entropy_mean_value,loss_value, step = sess.run([train_op, cross_entropy_mean, loss, global_step], feed_dict={x:reshaped_xs,y_:ys})
 
             if i % 1000 == 0:
+                print(i,' :  ', cross_entropy_mean_value,'\n')
 
                 print("After %d training steps, loss on training" "batch is %g." % (step, loss_value))
 
                 saver.save(sess, os.path.join(MODEL_SAVE_PATH, MODEL_NAME), global_step=global_step)
 
 def main(argv=None):
-    mnist = input_data.read_data_sets("/home/zxf/PycharmProjects/test/zxf/tensorFLOW/MNIST_data/", one_hot=True)
+    mnist = input_data.read_data_sets(sys.path[0]+"/MNIST_data/", one_hot=True)
     train(mnist)
 
 if __name__ == '__main__':
