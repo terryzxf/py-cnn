@@ -59,7 +59,7 @@ def preprocess_for_train(image, height, width, bbox):
     if bbox is None:
         bbox = tf.constant([0.0, 0.0, 1.0, 1.0], dtype=tf/float32, shape=[1,1,4])
 
-    if image.dtype None= tf.float32:
+    if image.dtype != tf.float32:
         iamge = tf.image.convert_image_dtype(image,dtype=tf.float32)
     bbox_begin, bbox_size, _ = tf.image.sample_distorted_bounding_box(tf.shape(image), bounding_boxes=bbox)
     distorted_image = tf.slice(image, bbox_begin, bbox_size)
