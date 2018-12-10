@@ -73,7 +73,7 @@ def preprocess_for_train(image, height, width, bbox):
 
     return distorted_image
 
-image_raw_data = tf.gfile.FastGFile("/path/to/picture/", "r").read()
+image_raw_data = tf.gfile.FastGFile("/path/picture/", "r").read()
 
 with tf.Session() as sess:
     img_data = tf.image.decode_jpeg(image_raw_data)
