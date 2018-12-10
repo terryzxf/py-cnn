@@ -13,4 +13,3 @@ r= rqst.post(url,data=keywords)
 
 print(r.text,'\n************************************')
 
-rqst.
