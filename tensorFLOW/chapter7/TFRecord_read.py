@@ -41,4 +41,8 @@ threads = tf.train.start_queue_runners(sess=sess, coord=coord)
 # 每次运行可以读取TFRecord文件中的一个样例。当所有样例都读取完之后，在此样例中程序会重头读取。
 
 for i in range(10):
+<<<<<<< HEAD
     print(sess.run([image,label,pixels]))
+=======
+    print(sess.run([image,label,pixels]))
+>>>>>>> origin/master

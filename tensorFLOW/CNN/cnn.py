@@ -1,3 +1,4 @@
+"""
 for i in range(TRAINING_STEPS):
 
     xs, ys = mnist.train.next_batch(BATCH_SIZE)
@@ -10,3 +11,9 @@ for i in range(TRAINING_STEPS):
 
     if i % 1000 == 0:
         print("After %d training steps, loss on training" "batch is %g." % (step, loss_value))
+"""
+import os,sys
+
+
+a= os.path.abspath(".")
+print(type(a),"\n",a,'\n',sys.path)

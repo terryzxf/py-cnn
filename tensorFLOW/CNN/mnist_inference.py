@@ -87,9 +87,9 @@ def inference(input_tensor, train, regularizer):
 
         fc2_biases = tf.get_variable("bias", [FC_SIZE], initializer=tf.constant_initializer(0.1))
 
-        fc2 = tf.nn.relu(tf.matmul(fc1, fc2_weights)+ fc1_biases)
 
-        logit = tf.matmul(fc2, fc2_weights) + fc2_biases
+
+        logit = tf.matmul(fc1, fc2_weights) + fc2_biases
 
     return logit
 
