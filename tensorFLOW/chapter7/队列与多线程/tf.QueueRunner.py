@@ -34,7 +34,7 @@ with tf.Session() as sess:
     threads = tf.train.start_queue_runners(sess=sess,coord=coord)
 
     # 获取队列中的数值.
-    for _ in range(3): print(sess.run(out_tensor)[0])
+    for _ in range(30): print(sess.run(out_tensor)[0])
 
     # 使用tf.train.Coordinator来停止所有的线程.
     coord.request_stop()
