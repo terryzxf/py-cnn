@@ -53,4 +53,5 @@ for i in range(num_shards):
         writer.write(example.SerializeToString())
     writer.close()
 
-#
+# 程序运行之后，在指定目录下将生成两个文件： /path/to/data.te.... 每一个文件中存储了两个样例。
+# 在生成了样例数据之后，以下代码展示了tf.train.match_filenames_once函数和tf.train.string_input_producer函数的使用方法。

@@ -20,8 +20,8 @@ features = tf.parse_single_exmaple(
 )
 
 with tf.Session() as sess:
-    # 虽然在本段程序中没有声明任何变变量，但使用tf,train
-    #
+    # 虽然在本段程序中没有声明任何变变量，但使用tf,train.match_filenames_once函数时需要
+    # 初始化一些变量
     tf.initialize_all_variables().run()
     '''
     
