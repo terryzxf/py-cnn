@@ -45,3 +45,12 @@ with tf.Session() as sess:
         print( cur_example_batch, cur_label_batch)
     coord.request_stop()
     coord.join(threads)
+
+# tf.train.batch函数和tf.train.shuffle_batch函数除了可以将单个训练数据整理成输入batch
+# 提供了并行化处理输入数据的方法。 tf.train.batch函数和tf.train.shuffle_batch函数并行化的方式一致，
+# 所以本小姐仅以应用更多的tf.train.shuffle_batch函数为例。通过设置tf.train.shauffle_batch函数的入队操作就是数据读取以及预处理的过程。
+# 当num_threads参数大于1时，多个线程会同事读取一个文件中不同样例并进行预处理。
+# 如果需要多个线程处理不同文件中的样例时，可以使用tf.train.shuffle_batch_join函数。
+# 此函数会从输入文件队列中获取不同文件分配给不同的线程，一般来说输入文件队列时通过7.3.2中介绍的tf.train.string_input_producer函数生成的。
+# 这个函数会平均分配文件以保证不同文件中数据会被尽量平均的使用。
+#
