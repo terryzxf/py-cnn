@@ -58,6 +58,7 @@ def distort_color(image, color_ordering=0):
 
     return tf.clip_by_value(image, 0.0, 1.0)
 
+
 def preprocess_for_train(image, height, width, bbox):
 
     if bbox is None:
