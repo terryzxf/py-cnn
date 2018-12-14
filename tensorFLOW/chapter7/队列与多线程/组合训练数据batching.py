@@ -37,7 +37,7 @@ with tf.Session() as sess:
     tf.local_variables_initializer().run()
     tf.global_variables_initializer().run()
     coord = tf.train.Coordinator()
-    treads = tf.train.start_queue_runners(sess=sess, coord=coord)
+    threads = tf.train.start_queue_runners(sess=sess, coord=coord)
 
     for i in range(2):
         cur_example_batch, cur_label_batch = sess.run([example_batch,label_batch])
@@ -53,4 +53,8 @@ with tf.Session() as sess:
 # 如果需要多个线程处理不同文件中的样例时，可以使用tf.train.shuffle_batch_join函数。
 # 此函数会从输入文件队列中获取不同文件分配给不同的线程，一般来说输入文件队列时通过7.3.2中介绍的tf.train.string_input_producer函数生成的。
 # 这个函数会平均分配文件以保证不同文件中数据会被尽量平均的使用。
-#
+#  tf.train.shuffle_batch函数和tf.train.shuffle_batch_join函数都可以完成多线程并行的方式来进行数据预处理。但是他们各有优劣、
+# 对于tf.train.shuffle_batch函数，不同线程会被读取同一个文件。 如果一个文件中的样例比较相似。（比如都属于同一个类别），
+# 那么神经网络训练效果可能会受到影响。所以在使用tf.train.shuffle_batch_join函数时，不同线程会读取不同文件。如果读取数据的线程数比总文件数还大，
+# 那么多个线程可能会读取同一个文件中相近部分的数据。而且多个线程读取多个文件可能导致过多的硬盘寻址，从而使得读取效率降低。
+# 不同的并行化方式各有所长，具体采用哪一种方法需要根据具体情况来确定。
