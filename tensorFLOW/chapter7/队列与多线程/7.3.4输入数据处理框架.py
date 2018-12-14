@@ -82,7 +82,7 @@ def preprocess_for_train(image, height, width, bbox):
 
 
 files = tf.train.match_filenames_once('/path/to/file_pattern-*')
-filename_queue = tf.train.string_input_producer(files, shyffle=False)
+filename_queue = tf.train.string_input_producer(files, shuffle=False)
 
 reader = tf.TFRecordReader()
 _, serialized_example = reader.read(filename_queue)
