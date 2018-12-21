@@ -1,3 +1,6 @@
+import  numpy as np
+from logistic_regression训练主函数 import sig
+
 
 def load_data(file_name, n):
     '''
@@ -21,6 +24,25 @@ def load_data(file_name, n):
         feature_data.append(feature_tmp)
     f.close()
     return np.mat(feature_data)
+
+def load_weight(w):
+    '''
+    导入LR模型
+    :param w(string):权重所在的文件位置
+    :return np.mat(w)(mat): 权重的矩阵
+
+    '''
+    f = open(w)
+    w = []
+    for line in f.readlines():
+        lines = line.strip().split("\t")
+        w_tmp = []
+        for x in lines:
+            w_tmp.append(float(x))
+        w.append(w_tmp)
+    f.close()
+    return  np.mat(w)
+
 
 def predict(data, w):
     '''
@@ -47,6 +69,7 @@ def save_result(file_name, result):
     :return:
     '''
     tmp = []
+    m = np.shape(result)[0]
     for i in range(m):
         tmp.append(str(result[i, 0]))
     f_result = open(file_name, "w")
