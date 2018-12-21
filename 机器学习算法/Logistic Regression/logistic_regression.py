@@ -117,7 +117,7 @@ def load_data(file_name, n):
     for line in f.readlines():
         feature_tmp = []
         lines = line.strip().split("\t")
-        if len(lines) <> n-1:
+        if len(lines) not == n-1:
             continue
         feature_tmp.append(1)
         for x in lines:
