@@ -8,11 +8,9 @@ def sig(x):
     :param x:  feature*w
     :return: sigmoid(x)(mat):Sigmoid值
     '''
+    x = np.float64(x)
+    return 1.0/(1+np.exp(-x))
 
-    if x>=0:
-        return 1.0/(1+np.exp(-x))
-    else:
-        return np.exp(x)/(1+np.exp(x))
 
 
 
